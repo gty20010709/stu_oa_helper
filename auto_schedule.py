@@ -7,7 +7,7 @@ import os
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-now = datetime.datetime.now() # 获取当前时间
+
 
 # 每天上午8点到12点，下午2点到6点为工作时间
 start_time1 = datetime.time(hour=8, minute=0) 
@@ -15,7 +15,7 @@ end_time1 = datetime.time(hour=12, minute=0)
 start_time2 = datetime.time(hour=14, minute=0) 
 end_time2 = datetime.time(hour=18, minute=0) 
 
-def main():
+def main(now):
     logging.debug("Starting to schedule.....")
     # 判断当前时间是否再工作时间内
     if start_time1 <= now.time() <= end_time1 or start_time2 <= now.time() <= end_time2:
@@ -40,6 +40,7 @@ def main():
 
 if __name__ == "__main__":
     while True:
+        now = datetime.datetime.now() # 获取当前时间
         logging.debug(f"{now.time()}")
-        main()
+        main(now)
         time.sleep(60)
