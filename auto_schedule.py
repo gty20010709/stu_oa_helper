@@ -35,8 +35,12 @@ def main(now):
             
         while True:
             # 进行调度
+            
             run_pending()
             time.sleep(5)
+            now = datetime.datetime.now()
+            if not (start_time1 <= now.time() <= end_time1 or start_time2 <= now.time() <= end_time2):
+                 break
 
 if __name__ == "__main__":
     while True:
